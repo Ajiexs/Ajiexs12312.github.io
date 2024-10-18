@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@1,100..900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Yanone+Kaffeesatz:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+
+        <div class="header-top">
+            <h1>Экскурс по Экзо-Планетам</h1>
+
+            <div class="menu">
+
+                <ul class="menu-list">
+
+                    <li class="menu-item">
+
+                        <a href="Project.html" ><span class="menu-sub">Главная</span></a>
+
+                    </li>
+
+                    <li class="menu-item">
+
+                        <a href="https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0" target="_blank"><span class="menu-sub">Связанное</span></a>
+
+                    </li>
+
+                    <li class="menu-item">
+
+                        <a href="https://discord.gg/morrison" target="_blank"><span class="menu-sub">Сообщество</span></a>
+
+                    </li>
+
+                    <li class="menu-item" id="desc">
+
+                        <span class="menu-sub" >Содержание</span>
+
+                        <div class="dropdown-content">
+
+                            <a href="#mainsect"><p>Выбор планеты</p></a>
+
+                            <a href="#planetInfo"><p>Информация</p></a>
+
+                            <a href="#sect1"><p>Методы</p></a>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="startik" id="stars"></div>
+
+        <div id="mainsect" class="header-bottom">
+            <div class="menu-container">
+
+                <button class="arrow left-arrow" onclick="rotateMenu(-1)">&#9664;</button>
+
+                <div class="circle-menu">
+
+                        <div class="planet">
+                            <img class="background-image" src="img/PCHFkXjiRz05bEU3b2-Pq1YD2Ua2EjLdq2oJvaQ7Sf3aTHJ-5Lci4_exGYmqaARVZcM38vHylouJgD409BzgtrT4-removebg-preview.png" alt="">
+                            <div class="text-overlay"><p>Проксима Центавра B</p></div>
+                        </div>
+
+                        <div class="planet">
+                            <img class="background-image" src="img/TRAPPIST-1e_Artist_s_Impression-removebg-preview.png" alt="">
+                            <div class="text-overlay"><p>TRAPPIST-1e</p></div>
+                        </div>
+
+                        <div class="planet">
+                            <img class="background-image" src="img/image-removebg-preview.png" alt="">
+                            <div class="text-overlay"><p>LHS 1140 b</p></div>
+                        </div>
+
+                        <div class="planet">
+                            <img class="background-image" src="img/image-removebg-preview (1).png" alt="">
+                            <div class="text-overlay"><p>HD 209458 b</p></div>
+                        </div>
+
+                        <div class="planet">
+                            <img class="background-image" src="img/image-removebg-preview (2).png" alt="">
+                            <div class="text-overlay"><p>Kepler-186f</p></div>
+                        </div>
+
+                </div>
+
+                <button class="arrow right-arrow" onclick="rotateMenu(1)">&#9654;</button>
+
+            </div>
+
+            <button id="moreinfo">Побробнее о Планете!</button>
+        </div>
+
+    </header>
+    <div class="separator"></div>
+    <main>
+        <div class="center">
+            <div class="section1" id="planetInfo">
+                <h2 id="planetName" class="glow-text"></h2>
+                <p id="starName" class="glow-text"></p>
+                <p id="planetType" class="glow-text"></p>
+                <p id="distance" class="glow-text"></p>
+                <p id="discoveryYear" class="glow-text"></p>
+                <p id="description" class="glow-text"></p>
+                <ul>
+                    <li id="interestingFacts" class="glow-text"></li>
+                    <li id="interestingFacts1" class="glow-text"></li>
+                </ul>
+            </div>
+            <button id="choose">Вернутся к выбору!</button>
+        </div>
+
+        <div class="center1">
+            <div id="sect1" class="section2">
+                <h1 class="glow-text">Но как же находят эти планеты?</h1>
+
+                <div class="methods">
+                    <button onclick="showMethod('transit')">Транзитный метод</button>
+                    <button onclick="showMethod('doppler')">Метод радиальных скоростей</button>
+                    <button onclick="showMethod('microlensing')">Метод гравитационного микролинзирования</button>
+                    <button onclick="showMethod('astrometry')">Метод астрометрии</button>
+                    <button onclick="showMethod('direct_imaging')">Прямое изображение</button>
+                </div>
+            
+                <div id="method-info">
+                    <div id="transit" class="method-content">
+                        <h2 class="glow-text">Транзитный метод</h2>
+                        <p class="glow-text">Это один из самых популярных и эффективных методов для обнаружения экзопланет. Его используют такие телескопы, как Kepler и TESS.
+                        Как это работает: Когда экзопланета проходит перед своей звездой (то есть совершает транзит), она частично блокирует свет звезды. Астрономы могут наблюдать небольшое уменьшение яркости звезды на короткий период времени. Если такие падения яркости повторяются регулярно, это может указывать на наличие планеты.
+                        </p>
+                        <h3 class="glow-text">Плюсы</h3>
+                        <ul>
+                            <li class="glow-text">Этот метод позволяет определить размер планеты (по тому, насколько она блокирует свет звезды).</li>
+                            <li class="glow-text">Может быть использован для изучения атмосферы планеты, когда свет звезды проходит через ее атмосферу.</li>
+                        </ul>
+                        <h3 class="glow-text">Минусы</h3>
+                        <ul>
+                            <li class="glow-text">Метод работает только для планет, орбита которых расположена так, что они проходят перед звездой относительно наблюдателя на Земле.</li>
+                            <li class="glow-text">Нужны многократные наблюдения, чтобы подтвердить наличие планеты.</li>
+                        </ul>
+                    </div>
+            
+                    <div id="doppler" class="method-content">
+                        <h2 class="glow-text">Метод радиальных скоростей</h2>
+                        <p class="glow-text">Также известен как метод Доплера. Он был использован для открытия одной из первых экзопланет — 51 Пегаса b.
+                        Как это работает: Звезда и планета не просто движутся друг вокруг друга: планета тянет за собой звезду, вызывая её небольшие движения (колебания) вперед и назад. Когда звезда движется по направлению к Земле, её свет смещается в синюю область спектра, а когда удаляется — в красную. Это смещение можно измерить с помощью спектрографов.
+                        </p>
+                        <h3 class="glow-text">Плюсы</h3>
+                        <ul>
+                            <li class="glow-text">Позволяет обнаруживать планеты, которые не совершают транзиты перед своей звездой.</li>
+                            <li class="glow-text">Даёт точные данные о массе планеты.</li>
+                        </ul>
+                        <h3 class="glow-text">Минусы</h3>
+                        <ul>
+                            <li class="glow-text">Трудно обнаруживать планеты, которые находятся на больших расстояниях от своей звезды, так как их влияние на движение звезды менее заметно.   </li>
+                            <li class="glow-text">Метод чувствителен в первую очередь к массивным планетам, таким как газовые гиганты.</li>
+                        </ul>
+                    </div>
+            
+                    <div id="microlensing" class="method-content">
+                        <h2 class="glow-text">Метод гравитационного микролинзирования</h2>
+                        <p class="glow-text">Этот метод основан на эффекте гравитационного линзирования, предсказанного Эйнштейном.
+                        Как это работает: Когда одна звезда проходит перед другой, гравитация ближайшей звезды действует как линза, усиливая свет более далекой звезды. Если у ближайшей звезды есть планета, она создаст дополнительные отклонения в усиленном свете. Наблюдение за этими отклонениями позволяет обнаружить планету.
+                        </p>
+                        <h3 class="glow-text">Плюсы</h3>
+                        <ul>
+                            <li class="glow-text">Позволяет находить экзопланеты на значительном расстоянии от Земли.</li>
+                            <li class="glow-text">Может обнаруживать планеты, которые находятся далеко от своих звезд.</li>
+                        </ul>
+                        <h3 class="glow-text">Минусы</h3>
+                        <ul>
+                            <li class="glow-text">События микролинзирования редки и трудно предсказуемы.</li>
+                            <li class="glow-text">Метод не даёт возможности многократно наблюдать за одной и той же планетой, так как линзирование длится только короткое время.</li>
+                        </ul>
+                    </div>
+            
+                    <div id="astrometry" class="method-content">
+                        <h2 class="glow-text">Метод астрометрии</h2>
+                        <p class="glow-text">Это метод измерения небольших изменений в положении звезды на небесной сфере.
+
+                            Как это работает: Когда планета вращается вокруг звезды, она заставляет звезду немного смещаться в пространстве. Астрономы измеряют это смещение с высокой точностью. Если смещение повторяется регулярно, это может указывать на наличие планеты.
+
+                        </p>
+                        <h3 class="glow-text">Плюсы</h3>
+                        <ul>
+                            <li class="glow-text">Позволяет находить планеты с длинными орбитами, которые трудно обнаружить другими методами.</li>
+                        </ul>
+                        <h3 class="glow-text">Минусы</h3>
+                        <ul>
+                            <li class="glow-text">Очень сложен в реализации, так как смещение звезды очень мало.</li>
+                            <li class="glow-text">Требуется высокоточная аппаратура.</li>
+                        </ul>
+                    </div>
+            
+                    <div id="direct_imaging" class="method-content">
+                        <h2 class="glow-text">Прямое изображение</h2>
+                        <p class="glow-text">Этот метод подразумевает получение реальных изображений экзопланет с помощью специальных телескопов.
+
+                            Как это работает: Планеты намного тусклее своих звезд, что делает их обнаружение очень сложным. Однако с помощью специальных масок, блокирующих свет звезды, астрономы могут увидеть слабый свет, исходящий от планеты.
+
+                        </p>
+                        <h3 class="glow-text">Плюсы</h3>
+                        <ul>
+                            <li class="glow-text">Позволяет непосредственно изучать экзопланеты и их атмосферы.</li>
+                            <li class="glow-text">Может быть применен к молодым планетам, которые ещё излучают тепло, оставшееся от их формирования.</li>
+                        </ul>
+                        <h3 class="glow-text">Минусы</h3>
+                        <ul>
+                            <li class="glow-text">Этот метод эффективен только для планет, находящихся далеко от своей звезды.</li>
+                            <li class="glow-text">Труден для реализации, так как звезда обычно намного ярче планеты.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Сайт Никиты Ковалёва. Все права защищены.</p>
+        </div>
+        <div class="footer-bottom">
+            <p>Сделано с <span>❤️</span> в Атырау</p>
+        </div>
+    </footer>
+    <script src="script.js"></script> 
+    <script>
+        document.getElementById("moreinfo").onclick = function() {
+            document.getElementById("planetInfo").scrollIntoView({ behavior: 'smooth' });
+        };
+        document.getElementById("choose").onclick = function() {
+            document.getElementById("mainsect").scrollIntoView({ behavior: 'smooth' });
+        };
+    </script>
+</body>
+</html>
