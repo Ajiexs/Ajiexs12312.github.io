@@ -1,0 +1,558 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat Alternates", sans-serif;
+}
+*, :after, :before {
+    box-sizing: inherit;
+}
+
+.header {
+    overflow: hidden;
+    height: 100vh;
+    min-height: 660px;
+    position: relative;
+    width: 100%;
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.header-top {
+    display: flex;
+    padding: 0 40px;
+    pointer-events: auto; /* Изменено с none на auto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    margin-top: 20px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-top h1{
+    color: white;
+    padding-bottom: 20px;
+}
+
+.header-top__logo-yellow{
+    width: 150px;
+    height: 120px;
+}
+
+.menu {
+    position: relative;
+}
+
+.menu-list {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, .6);
+    border-radius: 15px;
+    border: 1px solid #003d92;
+    height: 48px;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 24px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    font-family: BlenderProBook, sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    height: 100%;
+    line-height: 110%;
+    padding: 0 25px;
+    text-transform: uppercase;
+}
+
+.menu-item a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.menu-list:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#desc {
+    height: 50px;
+    background: #003d92;
+    font-weight: 700;
+    min-width: 168px;
+    text-align: center;
+    position: relative; /* Для абсолютного позиционирования выпадающего меню */
+    cursor: pointer; /* Указатель при наведении */
+    border-radius: 15px;
+}
+
+#desc span {
+    color: #ffffff;
+}
+
+.dropdown-content {
+    display: none; /* Скрыть по умолчанию */
+    position: absolute; /* Позиционирование для выпадающего меню */
+    background: rgba(0, 0, 0, .6);
+    border: 1px solid #003d92;
+    z-index: 1;
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    animation: fadeIn 0.3s ease-in-out; /* Анимация появления */
+    top: 100%; /* Позиционирование под элементом */
+    left: 0; /* Выравнивание по левому краю */
+}
+
+.dropdown-content p {
+    padding: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-item:hover .dropdown-content {
+    display: block; /* Показать при наведении */
+}
+
+.header-bottom {
+    padding-top: 5%;
+    font-size: 30px;
+    position: relative; /* Чтобы элементы внутри могли использовать position: absolute */
+    z-index: 10; /* Устанавливаем z-index выше фона */
+    font-family: "Montserrat Alternates", sans-serif;
+    color: #ffffff;
+    font-weight: 500; 
+    position: relative; /* Убедитесь, что это установлено для правильного отображения */
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-bottom h1{
+    padding-bottom: 200px;
+}
+
+.separator {
+    height: 20px; /* Установите высоту разделителя */
+    background-color: #040404; /* Цвет разделителя (можно изменить) */
+}
+
+body{
+    background-color: #080808;
+}
+
+.startik{
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 50%;
+    transform-origin: 0 0;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    animation: rotate 270s infinite linear;
+    overflow: hidden;
+    z-index: -1;
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes stars {
+    0%, 50%, 100% {opacity: 0;}
+    1%, 49% {opacity: 1;}
+}
+
+@keyframes stars {
+    0%, 50%, 100% {opacity: 0;}
+    5%, 45% {opacity: 1;}
+}
+
+.menu-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center; /* Центрирование контейнера */
+}
+
+.circle-menu {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.8s ease; /* Плавный переход при вращении */
+}
+
+.planet {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    background-size: cover; /* Масштабируем изображение по размеру элемента */
+    overflow: hidden; /* Скрываем лишние части изображения */
+}
+
+.active {
+    transform: translateY(150px) translateZ(200px) scale(1.5); /* Активная планета внизу и ближе к пользователю */
+    opacity: 1; /* Полная непрозрачность для активной планеты */
+}
+
+.planet:not(.active) {
+    opacity: 0.3; /* Уменьшаем непрозрачность для неактивных планет */
+    transform: translateY(0) translateZ(0) scale(0.7); /* Уменьшаем размер и убираем движение */
+}
+
+.planet:nth-child(1) { transform: translate(-150px, -100px) translateZ(-50px) scale(0.9); }  /* Верхняя левая */
+.planet:nth-child(2) { transform: translate(150px, -100px) translateZ(-50px) scale(0.9); }  /* Верхняя правая */
+.planet:nth-child(3) { transform: translate(-150px, 0) translateZ(0) scale(1.1); }           /* Средняя левая (больше) */
+.planet:nth-child(4) { transform: translate(150px, 0) translateZ(0) scale(1.1); }           /* Средняя правая (больше) */
+.planet:nth-child(5) { transform: translate(0, 150px) translateZ(200px) scale(1.5); }      /* Нижняя активная (внизу) */
+
+.arrow {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.left-arrow {
+    margin-top: 60%;
+    margin-right: 20px;
+}
+
+.right-arrow {
+    margin-left: 20px;
+    margin-top: 60%;
+}
+
+.background {
+    position: absolute; /* Позволяет фону находиться под другими элементами */
+    top: 0; /* Устанавливаем его в верхний угол */
+    left: 0;
+    right: 0;
+    bottom: 0; /* Занимает всю область */
+    z-index: 1; /* Фон ниже других элементов */
+}
+
+.text-overlay {
+    position: absolute; /* Абсолютное позиционирование для текста */
+    top: 50%; /* Центрируем текст по вертикали */
+    left: 50%; /* Центрируем текст по горизонтали */
+    transform: translate(-50%, -50%); /* Сдвигаем текст в центр */
+    color: white; /* Цвет текста */
+    font-size: 24px; /* Размер текста */
+    text-align: center; /* Центрирование текста */
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+.separator{
+    background-color: #000;
+    height: 2vh;
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column; /* Stack items on small screens */
+        padding: 10px;
+    }
+
+    .circle-menu {
+        width: 250px; /* Smaller menu on mobile */
+        height: 250px;
+    }
+}
+
+#moreinfo{
+    padding: 20px 20px;
+    margin-top: 15%;
+    border: none;
+    border-radius: 15px;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(76, 88, 255, 0.486);
+}
+
+.header-bottom button:hover{
+    cursor: pointer;
+}
+
+main{
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    height:250vh;
+    background-image: url(https://grizly.club/sec2/uploads/posts/2024-02/grizly-club-p-chernii-fon-kosmos-20.jpg);
+}
+
+.center{
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    border-radius: 30px;
+    background-color: #292929b0;
+    height: auto;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: auto;
+    font-size: 30px;
+    align-items: center;
+}
+
+.section1 p{
+    padding-top: 25px;
+}
+
+.section1 ul{
+    padding-top: 40px;
+}
+
+.section1 li{
+    padding-top: 40px;
+}
+
+#choose{
+    padding: 20px 20px;
+    margin-top: 5%;
+    border: none;
+    border-radius: 15px;
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(76, 88, 255, 0.486);
+}
+
+.center button:hover{
+    background-color: rgba(97, 160, 255, 0.507);
+    cursor: pointer;
+}
+
+.center button{
+    width: 300px;
+    text-decoration: none;
+}
+
+.planet{
+    width: 300px;
+    height: 300px;
+}
+
+.section1 p{
+    font-size: 30px;
+    color: gainsboro; /* Основной цвет текста */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 
+                 0 0 10px rgba(255, 255, 255, 0.2), 
+                 0 0 15px rgba(255, 255, 255, 0.1), 
+                 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.glow-text{
+    font-size: 30px;
+    color: gainsboro; /* Основной цвет текста */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 
+                 0 0 10px rgba(255, 255, 255, 0.2), 
+                 0 0 15px rgba(255, 255, 255, 0.1), 
+                 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.section1 h2{
+    font-size: 40px;
+    color: gainsboro; /* Основной цвет текста */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 
+                 0 0 10px rgba(255, 255, 255, 0.2), 
+                 0 0 15px rgba(255, 255, 255, 0.1), 
+                 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.section1 li{
+    font-size: 30px;
+    color: gainsboro; /* Основной цвет текста */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 
+                 0 0 10px rgba(255, 255, 255, 0.2), 
+                 0 0 15px rgba(255, 255, 255, 0.1), 
+                 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.methods {
+    display: flex;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.methods button{
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: rgba(76, 88, 255, 0.486);
+    color: white;
+    border-radius: 5px;
+}
+
+.methods button:hover {
+    background-color: rgba(109, 118, 253, 0.486);
+}
+
+#method-info {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.method-content {
+    display: none; 
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.center1{
+    display: flex;
+    height: auto;
+    width: 100%;
+    padding-top: 5%;
+}
+
+.section2{
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    border-radius: 30px;
+    background-color: #292929b0;
+    height: auto;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: auto;
+    font-size: 30px;
+    align-items: center;
+}
+
+.method-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.method-content.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    font-size: 14px;
+}
+
+.footer-bottom {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #ccc;
+}
+
+.footer-bottom span {
+    color: red;
+}
+
+.socials {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.socials li {
+    margin: 0 10px;
+}
+
+.socials a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.socials a:hover {
+    color: #FFD700; /* Изменение цвета при наведении */
+}
+
+@media (max-width: 600px) {
+    .socials li {
+        margin: 0 5px;
+    }
+
+    .footer-content p {
+        font-size: 12px;
+    }
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    margin-top: 20px; /* Добавьте отступ сверху, если нужно */
+}
+
+main {
+    padding-bottom: 60px; /* Отступ снизу для футера */
+}
+
